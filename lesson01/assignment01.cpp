@@ -118,7 +118,94 @@ testAverage(void) {
 
 float
 min1(vector<float> &array) {
-    
+    float min = array[0];
+    size_t i = 1;
+    while(i < array.size()) {
+        float n = array[i];
+        if(n < min) {
+            min = n;
+        }
+        i = i + 1;
+    }
+    return min;
+}
+
+void
+testMin1(void) {
+    vector<float> v1 = {6, 3, 8, 4, 5};
+    float s1 = min1(v1);
+    ensure(floatEqual(s1, 3), "sum test error 3");
+    vector<float> v2 = {1, 2, 3, 4, 5, 6, 7};
+    float s2 = min1(v2);
+    ensure(floatEqual(s2, 1), "sum test error 4");
+}
+
+int
+sum1(int n) {
+    int s = 0;
+    size_t i = 1;
+    while (i < n + 1) {
+        if (i % 2 == 0) {
+            s = s - i;
+        } else {
+            s = s + i;
+        }
+        i = i + 1;
+    }
+    // log(s);
+    return s;
+}
+
+void
+testSum1(void) {
+    float s1 = sum1(5);
+    ensure(floatEqual(s1, 3), "sum test error 3");
+    float s2 = sum1(7);
+    ensure(floatEqual(s2, 4), "sum test error 4");
+}
+
+int
+sum2(int n) {
+    int s = 1;
+    size_t i = 2;
+    while (i < n + 1) {
+        if (i % 2 == 0) {
+            s = s + i;
+        } else {
+            s = s - i;
+        }
+        i = i + 1;
+        // log(s);
+    }
+    return s;
+}
+
+void
+testSum2(void) {
+    float s1 = sum2(5);
+    ensure(floatEqual(s1, -1), "sum test error 3");
+    float s2 = sum2(8);
+    ensure(floatEqual(s2, 6), "sum test error 4");
+}
+
+int
+fac1(int n) {
+    int s = 1;
+    size_t i = 1;
+    while (i < n + 1) {
+        s = s * i;
+        i = i + 1;
+        // log(s);
+    }
+    return s;
+}
+
+void
+testFac1(void) {
+    float s1 = fac1(5);
+    ensure(floatEqual(s1, 120), "sum test error 3");
+    float s2 = fac1(8);
+    ensure(floatEqual(s2, 40320), "sum test error 4");
 }
 
 void
@@ -126,7 +213,11 @@ test() {
     //testSum();
     //testProduct();
     // testabs1();
-    testAverage();
+    // testAverage();
+    // testMin1();
+    // testSum1();
+    // testSum2();
+    testFac1();
 }
 
 int main(int argc, const char *argv[])
